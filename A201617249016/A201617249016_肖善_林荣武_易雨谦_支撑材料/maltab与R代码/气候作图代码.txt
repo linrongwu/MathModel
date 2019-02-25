@@ -1,0 +1,36 @@
+#北京
+data11<-read.table("D:\\high\\R\\work\\建模实战\\天气\\北京.txt",header = TRUE)
+data11[,8]<-seq(from=1,to=485,by=1)
+colnames(data11)[8]<-"sequence"
+data11
+summary(data11)
+plot(data11$sequence,(data11$temperature)/10,'l',col="blue",lwd=2,main="北京气温图",xlab="序列",ylab="气温（摄氏度）")
+plot(data11$sequence,(data11$dampness),'l',col="red",lwd=2,main="北京湿度图",xlab="序列",ylab="湿度（%）")
+plot(data11$sequence,(data11$wind)/10,'l',col="green",lwd=2,main="北京风速图",xlab="序列",ylab="风速（米/秒）")
+#天津
+data22<-read.table("D:\\high\\R\\work\\建模实战\\天气\\天津.txt",header = TRUE)
+data22[,8]<-seq(from=1,to=485,by=1)
+colnames(data22)[8]<-"sequence"
+data22
+summary(data22)
+plot(data22$sequence,(data22$temperature)/10,'l',col="blue",lwd=2,main="天津气温图",xlab="序列",ylab="气温（摄氏度）")
+plot(data22$sequence,(data22$dampness),'l',col="red",lwd=2,main="天津湿度图",xlab="序列",ylab="湿度（%）")
+plot(data22$sequence,(data22$wind)/10,'l',col="green",lwd=2,main="天津风速图",xlab="序列",ylab="风速（米/秒）")
+#上海
+data33<-read.table("D:\\high\\R\\work\\建模实战\\天气\\上海.txt",header = TRUE)
+data33[,8]<-seq(from=1,to=485,by=1)
+colnames(data33)[8]<-"sequence"
+data33
+summary(data33)
+plot(data33$sequence,(data33$temperature)/10,'l',col="blue",lwd=2,main="上海气温图",xlab="序列",ylab="气温（摄氏度）")
+plot(data33$sequence,(data33$dampness),'l',col="red",lwd=2,main="上海湿度图",xlab="序列",ylab="湿度（%）")
+plot(data33$sequence,(data33$wind)/10,'l',col="green",lwd=2,main="上海风速图",xlab="序列",ylab="风速（米/秒）")
+#广州
+data44<-read.table("D:\\high\\R\\work\\建模实战\\天气\\广州.txt",header = TRUE)
+data44[,8]<-seq(from=1,to=485,by=1)
+colnames(data44)[8]<-"sequence"
+data44
+summary(data44)
+plot(data44$sequence,(data44$temperature)/10,'l',col="blue",lwd=2,main="广州气温图",xlab="序列",ylab="气温（摄氏度）")
+plot(data44$sequence,(data44$dampness),'l',col="red",lwd=2,main="广州湿度图",xlab="序列",ylab="湿度（%）")
+plot(data44$sequence,(data44$wind)/10,'l',col="green",lwd=2,main="广州风速图",xlab="序列",ylab="风速（米/秒）")

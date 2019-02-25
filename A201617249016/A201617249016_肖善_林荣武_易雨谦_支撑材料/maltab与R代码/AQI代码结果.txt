@@ -1,0 +1,222 @@
+#北京
+#北京
+data1<-read.table("D:\\high\\R\\work\\建模实战\\1\\1_1.txt",header = TRUE)
+#data1<-read.table("D:\\high\\R\\work\\建模实战\\1\\1_2.txt",header = TRUE)
+data1
+summary(data1)
+plot(data1$time,data1$AQI1,xlab="time",ylab="北京AQI",main="Bejing-AQI",type="p")
+h<-hist(data1$AQI1,breaks=25,freq=FALSE,col = "red",xlab = "北京AQI指数",ylab = "AQI频率",main="北京AQI频率分布直方图")
+lines(density(data1$AQI1),col="blue",lwd=4)
+abline(v=100,lwd=3,col="green")
+h$density
+library(rdrobust)
+a<-seq(from=1,to=486,by=1)
+a
+rdrobust(y=a,x=data1$AQI1,c=100)
+rdplot(y=a,x=data1$AQI1,c=100)
+结果显示：
+> summary(data1)
+         time          AQI1      
+ 2014/11/30:  2   Min.   : 19.0  
+ 2013/11/1 :  1   1st Qu.: 62.0  
+ 2013/11/10:  1   Median : 98.0  
+ 2013/11/11:  1   Mean   :119.2  
+ 2013/11/12:  1   3rd Qu.:158.0  
+ 2013/11/13:  1   Max.   :424.0  
+ (Other)   :479                  
+> h$density
+ [1] 0.0001028807 0.0045267490 0.0074074074 0.0061728395 0.0077160494 0.0045267490
+ [7] 0.0042181070 0.0033950617 0.0029835391 0.0025720165 0.0014403292 0.0007201646
+[13] 0.0006172840 0.0012345679 0.0005144033 0.0005144033 0.0004115226 0.0004115226
+[19] 0.0002057613 0.0001028807 0.0001028807 0.0001028807
+> rdrobust(y=a,x=data1$AQI1,c=100)
+Call:
+rdrobust(y = a, x = data1$AQI1, c = 100)
+
+Summary:
+                        
+Number of Obs 486       
+NN Matches    3         
+BW Type       mserd     
+Kernel Type   Triangular
+
+                   Left    Right  
+Number of Obs      249     237    
+Order Loc Poly (p) 1       1      
+Order Bias (q)     2       2      
+BW Loc Poly (h)    32.3641 32.3641
+BW Bias (b)        50.4909 50.4909
+rho (h/b)          0.6410  0.6410 
+bias               2.2972  -8.9410
+
+Estimates:
+             Coef    Std. Err. z      P>|z|  CI Lower CI Upper
+Conventional 27.6509 40.0135   0.6910 0.4895 -50.7741 106.0759
+Robust                                0.4048 -52.5986 130.3769
+
+#天津
+data2<-read.table("D:\\high\\R\\work\\建模实战\\2\\2_1.txt",header = TRUE)
+#data2<-read.delim("clipboard",header = TRUE)
+data2
+plot(data2$time,data2$AQI2,xlab="time",ylab="天津AQI",main="天津-AQI",type="p")
+h<-hist(data2$AQI2,breaks=20,freq=FALSE,col = "red",xlab = "天津AQI指数",ylab = "AQI频率",main="天津AQI频率分布直方图")
+lines(density(data2$AQI2),col="blue",lwd=4)
+abline(v=100,lwd=2,col="green")
+abline(v=120,lwd=4,col="yellow")
+h$density
+
+library(rdrobust)
+a<-seq(from=1,to=486,by=1)
+a
+rdrobust(y=a,x=data2$AQI2,c=100)
+rdplot(y=a,x=data2$AQI2,c=100)
+结果显示：
+> summary(data2)
+         time          AQI2       
+ 2014/11/30:  2   Min.   : 30.00  
+ 2013/11/1 :  1   1st Qu.: 78.25  
+ 2013/11/10:  1   Median :108.00  
+ 2013/11/11:  1   Mean   :125.98  
+ 2013/11/12:  1   3rd Qu.:159.00  
+ 2013/11/13:  1   Max.   :423.00  
+ (Other)   :479
+> h$density
+ [1] 0.0006172840 0.0057613169 0.0067901235 0.0085390947 0.0077160494 0.0052469136
+ [7] 0.0031893004 0.0022633745 0.0027777778 0.0019547325 0.0015432099 0.0013374486
+[13] 0.0006172840 0.0005144033 0.0003086420 0.0004115226 0.0000000000 0.0002057613
+[19] 0.0001028807 0.0000000000 0.0001028807
+> rdrobust(y=a,x=data2$AQI2,c=100)
+Call:
+rdrobust(y = a, x = data2$AQI2, c = 100)
+
+Summary:
+                        
+Number of Obs 486       
+NN Matches    3         
+BW Type       mserd     
+Kernel Type   Triangular
+
+                   Left    Right  
+Number of Obs      208     278    
+Order Loc Poly (p) 1       1      
+Order Bias (q)     2       2      
+BW Loc Poly (h)    15.1569 15.1569
+BW Bias (b)        26.9750 26.9750
+rho (h/b)          0.5619  0.5619 
+bias               15.3683 -6.4482
+
+Estimates:
+             Coef    Std. Err. z      P>|z|  CI Lower CI Upper
+Conventional 76.4685 53.0197   1.4423 0.1492 -27.4481 180.3852
+Robust                                0.1169 -24.5725 221.1426
+#上海
+data3<-read.table("D:\\high\\R\\work\\建模实战\\3\\3_1.txt",header = TRUE)
+#data3<-read.delim("clipboard",header = TRUE)
+data3
+summary(data3)
+plot(data3$time,data3$AQI3,xlab="time",ylab="上海AQI",main="上海-AQI",type="p")
+h<-hist(data3$AQI3,breaks=25,freq=FALSE,col = "red",xlab = "上海AQI指数",ylab = "AQI频率",main="上海AQI频率分布直方图")
+lines(density(data3$AQI3),col="blue",lwd=4)
+abline(v=100,lwd=3,col="green")
+h$density
+
+library(rdrobust)
+a<-seq(from=1,to=486,by=1)
+a
+rdrobust(y=a,x=data3$AQI3,c=100)
+rdplot(y=a,x=data3$AQI3,c=100)
+结果显示：
+> summary(data3)
+         time          AQI3       
+ 2014/11/30:  2   Min.   : 15.00  
+ 2013/11/1 :  1   1st Qu.: 42.00  
+ 2013/11/10:  1   Median : 53.00  
+ 2013/11/11:  1   Mean   : 60.91  
+ 2013/11/12:  1   3rd Qu.: 70.00  
+ 2013/11/13:  1   Max.   :358.00  
+ (Other)   :479
+> h$density
+ [1] 0.0016460905 0.0020576132 0.0181069959 0.0222222222 0.0179012346 0.0146090535
+ [7] 0.0069958848 0.0045267490 0.0022633745 0.0022633745 0.0026748971 0.0012345679
+[13] 0.0014403292 0.0004115226 0.0004115226 0.0002057613 0.0004115226 0.0002057613
+[19] 0.0002057613 0.0000000000 0.0000000000 0.0000000000 0.0000000000 0.0000000000
+[25] 0.0000000000 0.0000000000 0.0000000000 0.0000000000 0.0000000000 0.0000000000
+[31] 0.0000000000 0.0000000000 0.0000000000 0.0000000000 0.0002057613
+> rdrobust(y=a,x=data3$AQI3,c=100)
+Call:
+rdrobust(y = a, x = data3$AQI3, c = 100)
+
+Summary:
+                        
+Number of Obs 486       
+NN Matches    3         
+BW Type       mserd     
+Kernel Type   Triangular
+
+                   Left    Right  
+Number of Obs      439     47     
+Order Loc Poly (p) 1       1      
+Order Bias (q)     2       2      
+BW Loc Poly (h)    22.1042 22.1042
+BW Bias (b)        37.1528 37.1528
+rho (h/b)          0.5950  0.5950 
+bias               -1.0601 -5.9477
+
+Estimates:
+             Coef      Std. Err. z       P>|z|  CI Lower  CI Upper
+Conventional -109.1019 112.1650  -0.9727 0.3307 -328.9412 110.7373
+Robust                                   0.4463 -372.3951 163.9664
+#广州
+data4<-read.table("D:\\high\\R\\work\\建模实战\\4\\4_1.txt",header = TRUE)
+#data4<-read.delim("clipboard",header = TRUE)
+data4
+plot(data4$time,data4$AQI4,xlab="time",ylab="广州AQI",main="广州-AQI",type="p")
+h<-hist(data4$AQI4,breaks=25,freq=FALSE,col = "red",xlab = "广州AQI指数",ylab = "AQI频率",main="广州AQI频率分布直方图")
+lines(density(data4$AQI4),col="blue",lwd=4)
+abline(v=100,lwd=3,col="green")
+h$density
+
+library(rdrobust)
+a<-seq(from=1,to=486,by=1)
+a
+rdrobust(y=a,x=data4$AQI4,c=100)
+rdplot(y=a,x=data4$AQI4,c=100)
+结果显示：
+> summary(data4)
+         time          AQI4       
+ 2014/11/30:  2   Min.   : 13.00  
+ 2013/11/1 :  1   1st Qu.: 50.25  
+ 2013/11/10:  1   Median : 68.00  
+ 2013/11/11:  1   Mean   : 74.05  
+ 2013/11/12:  1   3rd Qu.: 92.00  
+ 2013/11/13:  1   Max.   :205.00  
+ (Other)   :479 
+> h$density
+ [1] 0.0006172840 0.0024691358 0.0113168724 0.0106995885 0.0131687243 0.0146090535
+ [7] 0.0111111111 0.0098765432 0.0076131687 0.0059670782 0.0034979424 0.0026748971
+[13] 0.0016460905 0.0016460905 0.0006172840 0.0012345679 0.0010288066 0.0000000000
+[19] 0.0000000000 0.0002057613
+> rdrobust(y=a,x=data4$AQI4,c=100)
+Call:
+rdrobust(y = a, x = data4$AQI4, c = 100)
+
+Summary:
+                        
+Number of Obs 486       
+NN Matches    3         
+BW Type       mserd     
+Kernel Type   Triangular
+
+                   Left    Right  
+Number of Obs      393     93     
+Order Loc Poly (p) 1       1      
+Order Bias (q)     2       2      
+BW Loc Poly (h)    23.2854 23.2854
+BW Bias (b)        33.8278 33.8278
+rho (h/b)          0.6883  0.6883 
+bias               6.8955  2.4459 
+
+Estimates:
+             Coef    Std. Err. z      P>|z|  CI Lower CI Upper
+Conventional 27.7116 48.1134   0.5760 0.5646 -66.5890 122.0121
+Robust                                0.5727 -79.5860 143.9083

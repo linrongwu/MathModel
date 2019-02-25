@@ -1,0 +1,243 @@
+#北京
+d111<-read.table("D:\\high\\R\\work\\建模实战\\全\\111.txt",header = TRUE)
+d111
+summary(d111)
+d111.lm<-lm(d111$AQI1~d111$PM2.5+d111$PM10+d111$CO+d111$NO2+d111$SO2)
+summary(d111.lm)
+d111.lm1<-lm(d111$AQI1~d111$PM2.5+d111$PM10+d111$NO2)
+summary(d111.lm1)
+#回归分析得到，只有PM2.5，PM10，NO2,下面绘制出显著性污染的图像
+plot(d111$sequence,d111$PM2.5,'l',col='red',xlab="序列",ylab="PM2.5",main="北京PM2.5变化图")
+plot(d111$sequence,d111$PM10,'l',col='blue',xlab="序列",ylab="PM10",main="北京PM10变化图")
+plot(d111$sequence,d111$NO2,'l',col='green',xlab="序列",ylab="NO2",main="北京NO2变化图")
+结果显示：
+> d111.lm<-lm(d111$AQI1~d111$PM2.5+d111$PM10+d111$CO+d111$NO2+d111$SO2)
+> summary(d111.lm)
+
+Call:
+lm(formula = d111$AQI1 ~ d111$PM2.5 + d111$PM10 + d111$CO + d111$NO2 + 
+    d111$SO2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-71.357  -7.252  -1.457   6.164 113.822 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 32.47125    1.98081  16.393  < 2e-16 ***
+d111$PM2.5   0.87551    0.02913  30.055  < 2e-16 ***
+d111$PM10    0.33488    0.02377  14.087  < 2e-16 ***
+d111$CO      2.11828    2.35841   0.898    0.370    
+d111$NO2    -0.46760    0.06213  -7.527  2.6e-13 ***
+d111$SO2    -0.08663    0.05969  -1.451    0.147    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 16.44 on 480 degrees of freedom
+Multiple R-squared:  0.9535,	Adjusted R-squared:  0.953 
+F-statistic:  1970 on 5 and 480 DF,  p-value: < 2.2e-16
+
+> d111.lm1<-lm(d111$AQI1~d111$PM2.5+d111$PM10+d111$NO2)
+> summary(d111.lm1)
+
+Call:
+lm(formula = d111$AQI1 ~ d111$PM2.5 + d111$PM10 + d111$NO2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-69.660  -7.375  -1.542   5.932 114.337 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 33.02469    1.91520  17.243   <2e-16 ***
+d111$PM2.5   0.88478    0.02541  34.815   <2e-16 ***
+d111$PM10    0.33389    0.02356  14.175   <2e-16 ***
+d111$NO2    -0.47288    0.04873  -9.704   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 16.44 on 482 degrees of freedom
+Multiple R-squared:  0.9533,	Adjusted R-squared:  0.953 
+F-statistic:  3282 on 3 and 482 DF,  p-value: < 2.2e-16
+
+#天津
+d222<-read.table("D:\\high\\R\\work\\建模实战\\全\\222.txt",header = TRUE)
+d222
+summary(d222)
+d222.lm<-lm(d222$AQI2~d222$PM2.5+d222$PM10+d222$CO+d222$NO2+d222$SO2)
+summary(d222.lm)
+d222.lm1<-lm(d222$AQI2~d222$PM2.5+d222$PM10+d222$SO2)
+summary(d222.lm1)
+#回归分析得到，只有PM2.5，PM10，SO2,下面绘制出显著性污染的图像
+plot(d222$sequence,d222$PM2.5,'l',col='red',xlab="序列",ylab="PM2.5",main="天津PM2.5变化图")
+plot(d222$sequence,d222$PM10,'l',col='blue',xlab="序列",ylab="PM10",main="天津PM10变化图")
+plot(d222$sequence,d222$SO2,'l',col='green',xlab="序列",ylab="NO2",main="天津SO2变化图")
+结果显示：
+> d222.lm<-lm(d222$AQI2~d222$PM2.5+d222$PM10+d222$CO+d222$NO2+d222$SO2)
+> summary(d222.lm)
+
+Call:
+lm(formula = d222$AQI2 ~ d222$PM2.5 + d222$PM10 + d222$CO + d222$NO2 + 
+    d222$SO2)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-105.617   -7.416   -2.107    4.915  223.372 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 26.86244    2.96217   9.069  < 2e-16 ***
+d222$PM2.5   0.74437    0.04809  15.479  < 2e-16 ***
+d222$PM10    0.29732    0.03401   8.741  < 2e-16 ***
+d222$CO      4.95815    2.47015   2.007 0.045285 *  
+d222$NO2    -0.19498    0.08319  -2.344 0.019498 *  
+d222$SO2    -0.14194    0.03764  -3.771 0.000183 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 20.39 on 480 degrees of freedom
+Multiple R-squared:  0.9069,	Adjusted R-squared:  0.9059 
+F-statistic: 934.9 on 5 and 480 DF,  p-value: < 2.2e-16
+
+> d222.lm1<-lm(d222$AQI2~d222$PM2.5+d222$PM10+d222$SO2)
+> summary(d222.lm1)
+
+Call:
+lm(formula = d222$AQI2 ~ d222$PM2.5 + d222$PM10 + d222$SO2)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-102.201   -7.820   -2.227    5.190  224.143 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 25.48168    1.97736  12.887  < 2e-16 ***
+d222$PM2.5   0.74963    0.04410  16.998  < 2e-16 ***
+d222$PM10    0.28886    0.03403   8.489 2.59e-16 ***
+d222$SO2    -0.14290    0.02713  -5.267 2.10e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 20.52 on 482 degrees of freedom
+Multiple R-squared:  0.9053,	Adjusted R-squared:  0.9047 
+F-statistic:  1537 on 3 and 482 DF,  p-value: < 2.2e-16
+
+#上海
+d333<-read.table("D:\\high\\R\\work\\建模实战\\全\\333.txt",header = TRUE)
+d333
+summary(d333)
+d333.lm<-lm(d333$AQI3~d333$PM2.5+d333$PM10+d333$CO+d333$NO2+d333$SO2)
+summary(d333.lm)
+d333.lm1<-lm(d333$AQI3~d333$PM2.5+d333$PM10)
+summary(d333.lm1)
+#回归分析得到，只有PM2.5,PM10,下面绘制出显著性污染的图像
+plot(d333$sequence,d333$PM2.5,'l',col='red',xlab="序列",ylab="PM2.5",main="上海PM2.5变化图")
+plot(d333$sequence,d333$PM10,'l',col='blue',xlab="序列",ylab="PM10",main="上海PM10变化图")
+结果分析：
+> d333.lm<-lm(d333$AQI3~d333$PM2.5+d333$PM10+d333$CO+d333$NO2+d333$SO2)
+> summary(d333.lm)
+
+Call:
+lm(formula = d333$AQI3 ~ d333$PM2.5 + d333$PM10 + d333$CO + d333$NO2 + 
+    d333$SO2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-91.797  -5.150  -1.488   3.277 157.676 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 17.96434    2.73000   6.580 1.23e-10 ***
+d333$PM2.5   0.87167    0.05019  17.366  < 2e-16 ***
+d333$PM10    0.17736    0.03534   5.018 7.35e-07 ***
+d333$CO      5.31838    5.66476   0.939    0.348    
+d333$NO2    -0.03480    0.05698  -0.611    0.542    
+d333$SO2    -0.04745    0.08606  -0.551    0.582    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 15.35 on 480 degrees of freedom
+Multiple R-squared:  0.9116,	Adjusted R-squared:  0.9107 
+F-statistic: 990.2 on 5 and 480 DF,  p-value: < 2.2e-16
+
+> d333.lm1<-lm(d333$AQI3~d333$PM2.5+d333$PM10)
+> summary(d333.lm1)
+
+Call:
+lm(formula = d333$AQI3 ~ d333$PM2.5 + d333$PM10)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-90.468  -5.068  -1.702   3.666 158.632 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 19.49307    1.28202  15.205  < 2e-16 ***
+d333$PM2.5   0.89544    0.03893  23.004  < 2e-16 ***
+d333$PM10    0.16669    0.03273   5.092 5.08e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 15.32 on 483 degrees of freedom
+Multiple R-squared:  0.9114,	Adjusted R-squared:  0.911 
+F-statistic:  2484 on 2 and 483 DF,  p-value: < 2.2e-16
+
+#广州
+d444<-read.table("D:\\high\\R\\work\\建模实战\\全\\444.txt",header = TRUE)
+d444
+summary(d444)
+d444.lm<-lm(d444$AQI4~d444$PM2.5+d444$PM10+d444$CO+d444$NO2+d444$SO2)
+summary(d444.lm)
+d444.lm1<-lm(d444$AQI4~d444$PM2.5+d444$NO2)
+summary(d444.lm1)
+#回归分析得到，只有PM2.5,NO2,下面绘制出显著性污染的图像
+plot(d333$sequence,d333$PM2.5,'l',col='red',xlab="序列",ylab="PM2.5",main="广州PM2.5变化图")
+plot(d333$sequence,d333$NO2,'l',col='blue',xlab="序列",ylab="NO2",main="广州NO2变化图")
+结果分析：
+> d444.lm<-lm(d444$AQI4~d444$PM2.5+d444$PM10+d444$CO+d444$NO2+d444$SO2)
+> summary(d444.lm)
+
+Call:
+lm(formula = d444$AQI4 ~ d444$PM2.5 + d444$PM10 + d444$CO + d444$NO2 + 
+    d444$SO2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-49.385  -3.044  -0.634   2.330  32.997 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 18.35847    1.32194  13.888  < 2e-16 ***
+d444$PM2.5   1.12150    0.05041  22.248  < 2e-16 ***
+d444$PM10    0.09387    0.04008   2.342 0.019587 *  
+d444$CO     -2.18663    1.69535  -1.290 0.197748    
+d444$NO2    -0.10931    0.02903  -3.765 0.000187 ***
+d444$SO2    -0.02877    0.04880  -0.590 0.555776    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7.325 on 479 degrees of freedom
+Multiple R-squared:  0.9609,	Adjusted R-squared:  0.9605 
+F-statistic:  2353 on 5 and 479 DF,  p-value: < 2.2e-16
+
+> d444.lm1<-lm(d444$AQI4~d444$PM2.5+d444$NO2)
+> summary(d444.lm1)
+
+Call:
+lm(formula = d444$AQI4 ~ d444$PM2.5 + d444$NO2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-48.551  -3.183  -0.779   2.652  30.772 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 16.94310    0.77274  21.926  < 2e-16 ***
+d444$PM2.5   1.22773    0.01757  69.862  < 2e-16 ***
+d444$NO2    -0.11056    0.02299  -4.809 2.03e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7.368 on 482 degrees of freedom
+Multiple R-squared:  0.9602,	Adjusted R-squared:   0.96 
+F-statistic:  5810 on 2 and 482 DF,  p-value: < 2.2e-16
